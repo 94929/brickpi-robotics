@@ -8,7 +8,6 @@ from drawing import mymap
     1. it needs to find out which wall the sonar beam would hit when robot is at (x, y, theta)
     2. it needs to look at the difference between m and the actual measurement z 
     2. and calculate a likelihood value, probably using a Gaussian model 
-
 """
 
 # define global values to be used when calculating 
