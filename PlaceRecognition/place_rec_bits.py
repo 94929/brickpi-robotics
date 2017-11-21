@@ -87,7 +87,11 @@ def characterize_location(ls):
 # FILL IN: compare two signatures
 def compare_signatures(ls1, ls2):
     dist = 0
-    print "TODO:    You should implement the function that compares two signatures."
+    for i in range(len(ls1.sig)):
+        diff = ls1.sig[i] - ls2.sig[i]
+        abs_diff = diff ** 2
+        dist += abs_diff
+        
     return dist
 
 # This function characterizes the current location, and stores the obtained 
