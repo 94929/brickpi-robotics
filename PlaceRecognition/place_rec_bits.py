@@ -1,14 +1,14 @@
 #!/usr/bin/env python
-# By Jacek Zienkiewicz and Andrew Davison, Imperial College London, 2014
-# Based on original C code by Adrien Angeli, 2009
 
 import random
 import os
+import sonar
 
 # Location signature class: stores a signature characterizing one location
 class LocationSignature:
-    def __init__(self, no_bins = 360):
+    def __init__(self, no_bins = 360, precision = 1):
         self.sig = [0] * no_bins
+        self.precision = precision
         
     def print_signature(self):
         for i in range(len(self.sig)):
@@ -79,9 +79,10 @@ class SignatureContainer():
         
 # FILL IN: spin robot or sonar to capture a signature and store it in ls
 def characterize_location(ls):
-    print "TODO:    You should implement the function that captures a signature."
-    for i in range(len(ls.sig)):
-        ls.sig[i] = random.randint(0, 255)
+    for i in range(int(len(ls.sig) / self.precision)):
+        ls.sig[i*self.precision] = getSonarReading()
+        rotateSonar(self.precision)
+
 
 # FILL IN: compare two signatures
 def compare_signatures(ls1, ls2):
