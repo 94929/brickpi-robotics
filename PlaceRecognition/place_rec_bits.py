@@ -121,11 +121,16 @@ def recognize_location():
     ls_obs = LocationSignature();
     characterize_location(ls_obs);
 
+    dist_list = [None] * signatures.size
     # FILL IN: COMPARE ls_read with ls_obs and find the best match
     for idx in range(signatures.size):
         print "STATUS:  Comparing signature " + str(idx) + " with the observed signature."
         ls_read = signatures.read(idx);
-        dist    = compare_signatures(ls_obs, ls_read)
+        dist = compare_signatures(ls_obs, ls_read)
+        dist_list[idx] = dist
+
+    min_idx = dist.index(min(dist_list))
+    print "Display the index, {} of the recognized location on the screen".format(str(min_idx))
 
 # Prior to starting learning the locations, it should delete files from previous
 # learning either manually or by calling signatures.delete_loc_files(). 
